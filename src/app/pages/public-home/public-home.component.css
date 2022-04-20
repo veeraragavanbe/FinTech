@@ -7,3 +7,15 @@
 .p-10{
     padding: 10rem;
 }
+.small-text{
+    font-size: 20px;
+    color: aliceblue;
+}
+.sign-btn
+{
+    padding: 0.5rem;
+    margin-top: 2rem;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
