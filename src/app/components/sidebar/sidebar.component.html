@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light bg-gradient-white border-right Sidenavbar">
+  <div class="d-flex flex-row justify-content-between w-100">
+    <a class="d-flex flex-column p-3" (click)="navigateToHomePage()">
+      <img src="http://img.blaz.app/130x84" class="img-fluid">
+      <h4 class="text-dark">Service Provider</h4>
+    </a>
+
+    <button class="btn btn-outline-primary m-3 d-md-none" (click)="closeSideNav()">
+      <i class="fas fa-chevron-left"></i>
+      <i class="fas fa-angle-left"></i>
+    </button>
+  </div>
+
+  <div class="navbar w-100 align-items-start p-0">
+    <ul class="list-unstyled d-flex flex-column w-100">
+      <a class="Sidenavbar__link" routerLink="/service-provider/profile" routerLinkActive="Sidenavbar__linkActive"
+        (click)="onOpenSideNav()">Profile</a>
+      <a class="Sidenavbar__link" routerLink="/service-provider/upcoming-events"
+        routerLinkActive="Sidenavbar__linkActive" (click)="onOpenSideNav()">Upcoming Events</a>
+      <a class="Sidenavbar__link" routerLink="/service-provider/enquiries" routerLinkActive="Sidenavbar__linkActive"
+        (click)="onOpenSideNav()">Enquiries</a>
+      <a class="Sidenavbar__link" routerLink="/service-provider/quotes" routerLinkActive="Sidenavbar__linkActive"
+        (click)="onOpenSideNav()">Quotes</a>
+      <a class="Sidenavbar__link" routerLink="/service-provider/invoices" routerLinkActive="Sidenavbar__linkActive"
+        (click)="onOpenSideNav()">Invoices</a>
+      <a class="Sidenavbar__link" routerLink="/service-provider/kyc" routerLinkActive="Sidenavbar__linkActive"
+        (click)="onOpenSideNav()">KYC</a>
+      <a class="Sidenavbar__link" routerLink="/service-provider/login"
+        (click)="logoutServiceProvider();onOpenSideNav();">Logout</a>
+    </ul>
+  </div>
+</nav>

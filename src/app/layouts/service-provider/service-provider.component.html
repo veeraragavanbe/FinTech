@@ -1,0 +1,19 @@
+<div class="container-fluid m-0 p-0 overflow-hidden">
+  <div class="row">
+    <app-sidebar class="col-12 col-sm-12 col-md-3 col-lg-2 Sidebar p-0 d-block d-md-none" id="Sidenavbar"></app-sidebar>
+    <app-sidebar class="col-12 col-sm-12 col-md-3 col-lg-2 Sidebar p-0 d-none d-md-block" id="Sidenavbar_Desktop">
+    </app-sidebar>
+    <div class="col-12 col-sm-12 col-md-9 col-lg-10 offset-md-3 offset-lg-2 ServiceProvider">
+      <div
+        class="fixed-top bg-white shadow-sm col-12 col-sm-12 col-md-9 col-lg-10 offset-md-3 offset-lg-2 d-md-none p-2"
+        style="z-index: 3;">
+        <button class="ml-2 btn btn-outline-primary" (click)="openSideNav()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+
+      <router-outlet></router-outlet>
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

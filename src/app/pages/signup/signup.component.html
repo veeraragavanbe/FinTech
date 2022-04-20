@@ -1,0 +1,111 @@
+<section class="my-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-5">
+                <div class="card card-body">
+                    <h1 class="text-dark">Sign up</h1>
+                    <hr>
+
+                    <form>
+                        <div onload="dp.navigateTo({year: 1396, month: 4})">
+                            <div class="form-group">
+                                <label>First Name:</label>
+                                <input type="text" class="form-control" placeholder="Enter your first name" name="firstName" [(ngModel)]="registerDetails.firstName" id="firstname" />
+                                <p style="color:red">{{firstNameErrorText}}</p>
+                            </div>
+                            <div class="form-group">
+                                <label>Last Name:</label>
+                                <input type="text" class="form-control" placeholder="Enter your last name" name="lastName" [(ngModel)]="registerDetails.lastName" id="lastname" />
+                            </div>
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                <select name="gender" class="form-control" id="gender" [(ngModel)]="registerDetails.gender">
+                  <option selected value="Male">Male</option>
+                  <option value="Female">Female</option>
+                  <option value="PreferNotToSay">Prefer not to say</option>
+                </select>
+                                <p style="color:red">{{genderErrorText}}</p>
+                                <p style="color:red; font-size: 13px" *ngIf="registerDetails.gender == 'PreferNotToSay'">HostNMeet Event Participant will not be able to classify the user group based on Gender when you select 'Prefer not to say'
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth:</label>
+                                <input (click)="s.toggle()" type="text" ngbDatepicker #dp #s="ngbDatepicker" [minDate]="{year: 1980, month: 1, day: 1}" [maxDate]="maxDateObject" class="form-control" name="dob" [(ngModel)]="userDOBObject" />
+                            </div>
+                            <div class="form-group">
+                                <label>Country:</label>
+                                <!-- <input type="text" class="form-control" placeholder="Enter your Country" name="Country"
+                  [(ngModel)]="registerDetails.country" id="country" /> -->
+                                <select class="form-control" [(ngModel)]="registerDetails.country" (change)="countryChanged()" [ngModelOptions]="{standalone: true}">
+                  <option selected value="">(select)</option>
+                  <option *ngFor="let country of countries" [value]="country.name">{{country.name}}</option>
+                </select>
+                                <p style="color:red">{{countryErrorText}}</p>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Code:</label>
+                                        <input type="tel" class="form-control" placeholder="" name="code" [(ngModel)]="countryPhoneCode" readonly />
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label>Phone Number:</label>
+                                        <input type="tel" class="form-control" placeholder="Enter your phone number" name="phone" [(ngModel)]="registerDetails.phoneNumber" id="phone" />
+                                        <p style="color:red">{{phoneNumberErrorText}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Address:</label>
+                                <input type="text" class="form-control" placeholder="Enter your Address" name="address" [(ngModel)]="registerDetails.address" id="address" />
+                                <p style="color:red">{{addressErrorText}}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Interests:</label>
+                                <ng-select [multiple]="true" [(ngModel)]="registerDetails.preferedCategory" placeholder="Your interests">
+                                    <ng-option *ngFor="let category of preferredCategories" [value]="category.name">{{category.name}}
+                                    </ng-option>
+                                </ng-select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Email ID:</label>
+                                <input type="text" class="form-control" placeholder="Enter your Email ID" name="Email ID" [(ngModel)]="registerDetails.emailId" id="email" />
+                                <p style="color:red">{{emailIdErrorText}}</p>
+                            </div>
+                            <div class="form-group">
+                                <label class="mb-0" for="exampleInputPassword1">Password:</label>
+                                <input type="password" class="form-control" id="password" placeholder="Password" name="password" [(ngModel)]="registerDetails.password" />
+                                <p style="color:red">{{passwordErrorText}}</p>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary shadow" (click)="register(content)">Register</button>
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal -->
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Email Verification Code</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    <div class="modal-body">
+        <input type="number" maxlength="6" class="form-control" placeholder="Email Verification Code" [(ngModel)]="otp" />
+    </div>
+    <span>Enter the verification code sent to your email</span>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="otpVerification()">Register</button>
+    </div>
+</ng-template>

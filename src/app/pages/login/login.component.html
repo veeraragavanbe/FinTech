@@ -1,0 +1,41 @@
+<section class="my-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="card card-body">
+          <h1 class="text-dark">Log in</h1>
+          <p class="m-0">Not registered with us yet? <a routerLink="/signup">Sign up</a> </p>
+          <hr>
+          <form (ngSubmit)="login()" ngNativeValidate>
+            <div class="form-group">
+              <label>Email address:</label>
+              <input type="email" class="form-control" placeholder="Enter email" name="email"
+                [(ngModel)]="loginDetails.username" required />
+            </div>
+            <div class="form-group">
+              <label class="mb-0">Password:</label>
+              <input type="password" class="form-control" placeholder="Password" name="password"
+                [(ngModel)]="loginDetails.password" required />
+            </div>
+
+            <!-- <p style="color:blue" class="mb-1" routerLink="/forget-password" >Forgot your password?</p> -->
+            <div class="d-flex flex-row justify-content-between">
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label">Keep me signed in</label>
+              </div>
+              <div class="form-group text-right">
+                <a routerLink="/forget-password">Forgot Password</a>
+              </div>
+            </div>
+            <button type="submit" class="btn Button shadow"><span class="Button__text">Log in</span></button>
+
+            <hr>
+            <div class="text-right"><a routerLink="/service-provider/login">Service Provider Login</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

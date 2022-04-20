@@ -1,0 +1,126 @@
+<nav class="navbar navbar-expand-md text-primary TopBar">
+  <a class="navbar-brand font-weight-bold" style="cursor:pointer;" routerLink="/">
+    <img src="../../../assets/images/logo.jpeg" class="img-fluid TopBar__image">
+    <!-- <h1 class="text-dark p-1 rounded d-inline text-uppercase Intro__title">Host<span class="text-danger">n</span>Meet</h1> -->
+  </a>
+  <button class="d-md-none btn btn-outline-primary" (click)="openNav()">
+    <i class="fas fa-bars"></i>
+  </button>
+  <div class="navbar d-none d-md-flex w-100 flex-row align-items-center justify-content-between">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 d-flex flex-row align-items-center justify-content-between">
+      <li class="nav-item">
+        <a class="nav-link TopBar__link" routerLink="/">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link TopBar__link" (click)="navigateToHomePage()">
+          Events
+        </a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0 d-flex flex-row align-items-center justify-content-between">
+      <li class="nav-item" *ngIf="!userDetailsAvailableOrNot">
+        <button class="nav-link text-dark btn btn-dim btn-sm mr-2 shadow-none px-2 px-md-auto" routerLink="/login">
+          <i class="fas fa-sign-in-alt "></i>
+          Log in
+        </button>
+      </li>
+      <li class="nav-item" *ngIf="!userDetailsAvailableOrNot">
+        <button class="nav-link text-white btn Button" routerLink="/signup">
+          <span class="Button__text">
+            <i class="fas fa-user-plus"></i>
+            Sign-up
+          </span>
+        </button>
+      </li>
+      <li class="nav-item" *ngIf="userDetailsAvailableOrNot">
+        <a class="dropdown mr-1">
+          <button type="button" class="bg-transparent border-0 outline-0" id="dropdownMenu" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" alt="">
+            <a class="nav-link text-light d-flex flex-row align-items-center">
+              <img class="rounded-circle mr-2"
+                src="https://dummyimage.com/32/eee/444&text={{userDetails.username[0]}}" />
+              <i class="fas fa-angle-down text-dim"></i>
+            </a>
+          </button>
+          <div class="dropdown-menu px-2 dropdown-menu-right" aria-labelledby="dropdownMenu">
+            <a class="nav-link text-dark cursor-pointer dropdown-item" routerLink="/account">
+              <i class="fas fa-user mr-1"></i>
+              {{ userDetails.username }}
+            </a>
+            <a class="nav-link text-dark cursor-pointer dropdown-item" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </a>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- Mobile Navigation -->
+  <div class="MobileNavigation d-block d-md-none" id="MobileNavigation">
+    <div class="d-flex w-100 flex-row justify-content-around align-items-center">
+      <button (click)="closeNav()" type="button" class="close p-2" aria-label="Close">
+        <span aria-hidden="true">
+          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-angle-right"></i>
+        </span>
+      </button>
+      <img src="../../../assets/images/logo.jpeg" class="img-fluid p-2" style="max-width: 200px;">
+    </div>
+
+
+    <ul class="list-unstyled p-3 text-right">
+      <li class="nav-item border-bottom border-top py-2">
+        <a class="nav-link text-dark" (click)="navigateToHomePage();onOpenNav();">
+          Home
+        </a>
+      </li>
+      <li class="nav-item border-bottom py-2" *ngIf="userDetailsAvailableOrNot">
+        <a class="nav-link text-dark" routerLink="/events/create-event" (click)="onOpenNav()">
+          <i class="fas fa-plus"></i>
+          Create an event
+        </a>
+      </li>
+      <li class="nav-item border-bottom py-2" *ngIf="!userDetailsAvailableOrNot">
+        <button class="nav-link text-dark ml-auto" routerLink="/login" (click)="onOpenNav()">
+          <i class="fas fa-sign-in-alt "></i>
+          Log in
+        </button>
+      </li>
+      <li class="nav-item border-bottom py-2" *ngIf="!userDetailsAvailableOrNot">
+        <button class="nav-link text-white btn Button ml-auto" routerLink="/signup" (click)="onOpenNav()">
+          <span class="Button__text">
+            <i class="fas fa-user-plus"></i>
+            Sign-up
+          </span>
+        </button>
+      </li>
+      <li class="nav-item border-bottom py-2" *ngIf="userDetailsAvailableOrNot">
+        <a class="dropdown">
+          <button type="button" class="bg-transparent border-0 outline-0 px-0" id="dropdownMenu" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false" alt="">
+            <a class="nav-link text-dark d-flex flex-row align-items-center">
+              <img class="rounded-circle mr-2" src="https://img.blaz.app/30x30" />
+              <span class="mr-2">My Account</span>
+              <i class="fas fa-angle-down"></i>
+            </a>
+          </button>
+          <div class="dropdown-menu px-2 dropdown-menu-right" aria-labelledby="dropdownMenu">
+            <!-- <a class="nav-link text-dark cursor-pointer dropdown-item" routerLink="/account">
+              <i class="fas fa-user mr-1"></i>
+              {{ userDetails.username }}
+            </a> -->
+            <a class="nav-link text-dark cursor-pointer dropdown-item" (click)="logout();onOpenNav()">
+              <i class="fas fa-sign-out-alt"></i>
+              Logout
+            </a>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
