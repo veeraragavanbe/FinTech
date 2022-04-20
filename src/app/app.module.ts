@@ -1,15 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, Injectable } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
-import { NgbModule, NgbDateAdapter, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrModule } from 'ngx-toastr';
 import { LoadingBarHttpClientModule } from '@ngx-loading-bar/http-client';
 import { FileUploadModule } from '@iplab/ngx-file-upload';
-import { AgmCoreModule } from '@agm/core';
 import { LoadingBarModule } from '@ngx-loading-bar/core';
 import { TimeagoModule } from 'ngx-timeago';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -31,7 +29,6 @@ import { PrintComponent } from './layouts/print/print.component';
 
 import { CustomeTimePipe } from '../app/time-pipe.pipe';
 
-import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 
 export function tokenGetter() {
@@ -54,29 +51,7 @@ function padNumber(value: number) {
   }
 }
 
-@Injectable()
-export class NgbFormatter extends NgbDateParserFormatter {
 
-  parse(value: string): NgbDateStruct {
-    if (value) {
-      const dateParts = value.trim().split('-');
-      if (dateParts.length === 1 && isNumber(dateParts[0])) {
-        return { year: toInteger(dateParts[0]), month: null, day: null };
-      } else if (dateParts.length === 2 && isNumber(dateParts[0]) && isNumber(dateParts[1])) {
-        return { year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: null };
-      } else if (dateParts.length === 3 && isNumber(dateParts[0]) && isNumber(dateParts[1]) && isNumber(dateParts[2])) {
-        return { year: toInteger(dateParts[0]), month: toInteger(dateParts[1]), day: toInteger(dateParts[2]) };
-      }
-    }
-    return null;
-  }
-
-  format(date: NgbDateStruct): string {
-    return date ?
-      `${isNumber(date.day) ? padNumber(date.day) : ''}-${isNumber(date.month) ? padNumber(date.month) : ''}-${date.year}` :
-      '';
-  }
-}
 
 
 @NgModule({
@@ -114,15 +89,12 @@ export class NgbFormatter extends NgbDateParserFormatter {
         blacklistedRoutes: []
       }
     }),
-    NgbModule.forRoot(),
     ToastrModule.forRoot({
       toastComponent: NotyfToast,
     }),
   ],
   entryComponents: [NotyfToast],
-  providers: [{
-    provide: NgbDateParserFormatter, useClass: NgbFormatter
-  }],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

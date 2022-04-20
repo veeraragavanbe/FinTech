@@ -37,18 +37,12 @@ export class SignupComponent implements OnInit {
 
   userDOB = ""
   otp: Number
-  maxDateObject = { year: 1789, month: 7, day: 14 };
 
   userDOBObject = {
     year: 1995,
     month: 1,
     day: 1
   }
-
-  date: NgbDate
-
-  preferredCategories = []
-
   constructor(
   ) {
 

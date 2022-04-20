@@ -1,0 +1,9 @@
+.header-text{
+    text-transform: uppercase;
+    font-size: 35px;
+    color: white;
+    font-weight: 600;
+}
+.p-10{
+    padding: 10rem;
+}
